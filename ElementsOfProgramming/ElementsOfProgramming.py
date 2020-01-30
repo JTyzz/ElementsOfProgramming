@@ -59,7 +59,40 @@ def even_odd_array(A):
 
 even_odd_array([3,4,6,7,8,9])
 
+def reverse(self, x):
+        inttostring = str(abs(x))[::-1]
+        stringtoint = int(inttostring)
+        if stringtoint > 2**31 or stringtoint < -2**31:
+            return 0
+        else:
+            return -stringtoint if x < 0 else stringtoint
 
+'''
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+'''
+def isValid(self, s: str) -> bool:
+
+        lc = {"[", "(", "{"}
+        vc = {"[]","()","{}"}
+        st = []
+        
+        for c in s:
+            if c in lc:
+                st.append(c)
+            else:
+                if not st:
+                    return False
+                if st.pop() + c not in vc:
+                    return False
+        
+        return not st
+        
 
 
 
